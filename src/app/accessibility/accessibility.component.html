@@ -197,15 +197,15 @@
           <input type="time" id="startTime">
         </fieldset>
         <fieldset class="form-group">
-        <label for="website">Company Web site</label>
-        <input type="url" class="form-control" id="website" placeholder="Please enter your favourite Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
-          [(ngModel)]="record.website" #website="ngModel" required>
+          <label for="website">Company Web site</label>
+          <input type="url" class="form-control" id="website" placeholder="Please enter your favourite Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+            [(ngModel)]="record.website" #website="ngModel" required>
         </fieldset>
 
-        <label for="range">How far (in miles) is your journey to work approximately?</label>
-        <input id="range" type="range" max="50" min="0" step="10">
-
-
+        <fieldset class="form-group">
+          <label for="range">How far (in miles) is your journey to work approximately?</label>
+          <input id="range" type="range" max="50" min="0" step="10">
+        </fieldset>
 
         <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
           <div *ngIf="website.errors && (website.dirty || website.touched)">
@@ -217,11 +217,15 @@
             </div>
           </div>
         </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!newForm.form.valid">Submit</button>
+
       </div>
     </div>
 
-    <button type="submit" class="_btn _btn-success" mat-raised-button color="accent" [disabled]="!newForm.form.valid">Submit</button>
-    <button type="button" class="_btn _btn-default" mat-raised-button color="primary" (click)="newForm.reset()">Clear</button>
+    <!--
+      <button type="button" class="_btn _btn-default" mat-raised-button color="primary" (click)="newForm.reset()">Clear</button>
+    -->
 
   </form>
 
