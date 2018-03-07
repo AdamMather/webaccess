@@ -1,51 +1,221 @@
 <div id="content">
-  <h1>New Record</h1>
+
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#personDetail" aria-expanded="false" aria-controls="personDetail">
+      Personal Detail
+    </a>
+    <a class="btn btn-primary" data-toggle="collapse" href="#addressDetail" aria-expanded="false" aria-controls="addressDetail">
+      Address Detail
+    </a>
+    <a class="btn btn-primary" data-toggle="collapse" href="#personProfile" aria-expanded="false" aria-controls="personProfile">
+      Contact Profile
+    </a>
+  </p>
+
+
   <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
 
-    <fieldset class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" minlength="3" maxlength="30" placeholder="Please enter the first name"
-        name="firstName" [(ngModel)]="record.firstName" #firstName="ngModel" required>
-    </fieldset>
+    <div id="personDetail" class="collapse">
+      <h1>Personal Detail</h1>
+      <div class="card card-block">
+        <fieldset class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" minlength="3" maxlength="30" placeholder="Please enter the contact first name"
+            name="firstName" [(ngModel)]="record.firstName" #firstName="ngModel" required>
 
-    <fieldset class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" minlength="3" maxlength="30" placeholder="Please enter the last name"
-        name="lastName" [(ngModel)]="record.lastName" #lastName="ngModel" required>
-    </fieldset>
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" minlength="3" maxlength="30" placeholder="Please enter the contact last name"
+            name="lastName" [(ngModel)]="record.lastName" #lastName="ngModel" required>
 
-    <fieldset class="form-group">
-      <label for="emailAddress">Email Address</label>
-      <input type="text" class="form-control" id="emailAddress" placeholder="Please enter an email address" name="emailAddress"
-        [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
-    </fieldset>
+          <label for="emailAddress">Email Address</label>
+          <input type="email" class="form-control" id="emailAddress" placeholder="Please enter a contact email address" name="emailAddress"
+            pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
 
-    <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
-      <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-        <div [hidden]="!firstName.errors.required" role="alert">
-          <a (click)="getFocus('firstName')">The contact first name is required!</a>
+          <label for="landline">Landline Number</label>
+          <input type="tel" class="form-control" id="landline" placeholder="Please enter a contact UK landline telephone number" name="landline"
+            pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
+            [(ngModel)]="record.landline" #landline="ngModel" required>
+
+          <label for="mobile">Mobile Number</label>
+          <input type="tel" class="form-control" id="mobile" placeholder="Please enter a contact mobile telephone number" name="mobile"
+            pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
+            [(ngModel)]="record.mobile" #mobile="ngModel" required>
+        </fieldset>
+
+        <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
+          <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+            <div [hidden]="!firstName.errors.required" role="alert">
+              <a (click)="getFocus('firstName')">The contact first name is required!</a>
+            </div>
+            <div [hidden]="!firstName.errors.minlength" role="alert">
+              <a (click)="getFocus('firstName')">The contact first name must be at least 3 characters long.</a>
+            </div>
+            <div [hidden]="!firstName.errors.maxlength" role="alert">
+              <a (click)="getFocus('firstName')">The contact first name cannot be more than 30 characters long.</a>
+            </div>
+          </div>
+          <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+            <div [hidden]="!lastName.errors.required" role="alert">
+              <a (click)="getFocus('lastName')">The contact last name is required!</a>
+            </div>
+            <div [hidden]="!lastName.errors.minlength" role="alert">
+              <a (click)="getFocus('lastName')">The contact last name must be at least 3 characters long.</a>
+            </div>
+            <div [hidden]="!lastName.errors.maxlength" role="alert">
+              <a (click)="getFocus('lastName')">The contact last name cannot be more than 30 characters long.</a>
+            </div>
+          </div>
+          <div *ngIf="emailAddress.errors && (emailAddress.dirty || emailAddress.touched)">
+            <div [hidden]="!emailAddress.errors.required" role="alert">
+              <a (click)="getFocus('emailAddress')">The contact email address is required!</a>
+            </div>
+            <div [hidden]="!emailAddress.errors.pattern" role="alert">
+              <a (click)="getFocus('emailAddress')">The contact email address is invalid!</a>
+            </div>
+          </div>
+          <div *ngIf="landline.errors && (landline.dirty || landline.touched)">
+            <div [hidden]="!landline.errors.required" role="alert">
+              <a (click)="getFocus('landline')">The contact UK landline telephone number is required!</a>
+            </div>
+            <div [hidden]="!landline.errors.pattern" role="alert">
+              <a (click)="getFocus('landline')">The contact landline telephone number is invalid!</a>
+            </div>
+          </div>
+          <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)">
+            <div [hidden]="!mobile.errors.required" role="alert">
+              <a (click)="getFocus('mobile')">The contact mobile telephone number is required!</a>
+            </div>
+            <div [hidden]="!mobile.errors.pattern" role="alert">
+              <a (click)="getFocus('mobile')">The contact mobile telephone number is invalid!</a>
+            </div>
+          </div>
         </div>
-        <div [hidden]="!firstName.errors.minlength" role="alert">
-          <a (click)="getFocus('firstName')">The contact first name must be at least 3 characters long.</a>
-        </div>
-        <div [hidden]="!firstName.errors.maxlength" role="alert">
-          <a (click)="getFocus('firstName')">The contact first name cannot be more than 30 characters long.</a>
+        <div *ngIf="!newForm.form.valid">
+          <a class="btn btn-primary" data-toggle="collapse" href="#addressDetail" aria-expanded="false" aria-controls="addressDetail">
+            Address Detail
+          </a>
         </div>
       </div>
-      <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-        <div [hidden]="!lastName.errors.required" role="alert">
-          <a (click)="getFocus('lastName')">The contact last name is required!</a>
+    </div>
+
+    <div id="addressDetail" class="collapse">
+      <h1>Address Detail</h1>
+      <div class="card card-block">
+        <fieldset class="form-group">
+          <label for="addrLine1">Line 1</label>
+          <input type="text" class="form-control" id="addrLine1" placeholder="Please enter the first line of the contact main address"
+            name="addrLine1" [(ngModel)]="address.addrLine1" #addrLine1="ngModel" required>
+
+          <label for="addrLine2">Line 2</label>
+          <input type="text" class="form-control" id="addrLine2" placeholder="Please enter the second line of the contact main address"
+            name="addrLine2" [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
+
+          <label for="addrLine3">Line 3</label>
+          <input type="text" class="form-control" id="addrLine3" placeholder="Please enter the third line of the contact main address"
+            name="addrLine3" [(ngModel)]="address.addrLine3" #addrLine3="ngModel">
+
+          <label for="city">Town / City</label>
+          <input type="text" class="form-control" id="city" placeholder="Please enter the town or city of the contact main address"
+            name="city" [(ngModel)]="address.city" #city="ngModel" required>
+
+          <label for="county">County</label>
+          <input type="text" class="form-control" id="county" placeholder="Please enter the county of the contact main address" name="county"
+            [(ngModel)]="address.county" #county="ngModel" required>
+
+          <label for="postcode">Post Code</label>
+          <input type="text" class="form-control" id="postcode" placeholder="Please enter the postcode of the contact main address"
+            pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
+            name="postcode" [(ngModel)]="address.postcode" #postcode="ngModel" required>
+        </fieldset>
+
+        <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
+          <div *ngIf="addrLine1.errors && (addrLine1.dirty || addrLine1.touched)">
+            <div [hidden]="!addrLine1.errors.required" role="alert">
+              <a (click)="getFocus('addrLine1')">The first line of the contact main address is required!</a>
+            </div>
+          </div>
+          <div *ngIf="addrLine2.errors && (addrLine2.dirty || addrLine2.touched)">
+            <div [hidden]="!addrLine2.errors.required" role="alert">
+              <a (click)="getFocus('addrLine2')">The second line of the contact main address is required!</a>
+            </div>
+          </div>
+          <div *ngIf="city.errors && (city.dirty || city.touched)">
+            <div [hidden]="!city.errors.required" role="alert">
+              <a (click)="getFocus('city')">The town or city of the contact main address is required!</a>
+            </div>
+          </div>
+          <div *ngIf="county.errors && (county.dirty || county.touched)">
+            <div [hidden]="!county.errors.required" role="alert">
+              <a (click)="getFocus('county')">The county of the contact main address is required!</a>
+            </div>
+          </div>
+          <div *ngIf="postcode.errors && (postcode.dirty || postcode.touched)">
+            <div [hidden]="!postcode.errors.required" role="alert">
+              <a (click)="getFocus('postcode')">The postcode of the contact main address is required!</a>
+            </div>
+            <div [hidden]="!postcode.errors.pattern" role="alert">
+              <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
+            </div>
+          </div>
+
         </div>
-        <div [hidden]="!lastName.errors.minlength" role="alert">
-          <a (click)="getFocus('lastName')">The contact last name must be at least 3 characters long.</a>
+
+        <div *ngIf="!newForm.form.valid">
+          <a class="btn btn-primary" data-toggle="collapse" href="#personProfile" aria-expanded="false" aria-controls="personProfile">
+            Contact Profile
+          </a>
         </div>
-        <div [hidden]="!lastName.errors.maxlength" role="alert">
-          <a (click)="getFocus('lastName')">The contact last name cannot be more than 30 characters long.</a>
-        </div>
+
       </div>
-      <div *ngIf="emailAddress.errors && (emailAddress.dirty || emailAddress.touched)">
-        <div [hidden]="!emailAddress.errors.required" role="alert">
-          <a (click)="getFocus('emailAddress')">The contact email address is required!</a>
+
+    </div>
+
+    <div id="personProfile" class="collapse">
+      <h1>Profile</h1>
+      <div class="card card-block">
+
+        <fieldset class="form-group">
+
+          <legend>In which sector do you work?</legend>
+          <input type="radio" id="private" name="sector" (change)="onSelectionChange(entry)" value="private">
+          <label for="private">Private</label>
+          <br />
+          <input type="radio" id="public" name="sector" (change)="onSelectionChange(entry)" value="public">
+          <label for="public">Public</label>
+          <br />
+          <input type="radio" id="voluntary" name="sector" (change)="onSelectionChange(entry)" value="voluntary">
+          <label for="voluntary">Voluntary</label>
+        </fieldset>
+
+        <fieldset class="form-group">
+
+          <label for="date">When did you start at the company?</label>
+          <input id="date" type="date">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="startTime">What time did you arrive at work this morning? </label>
+          <input type="time" id="startTime">
+        </fieldset>
+        <fieldset class="form-group">
+        <label for="website">Company Web site</label>
+        <input type="url" class="form-control" id="website" placeholder="Please enter your favourite Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+          [(ngModel)]="record.website" #website="ngModel" required>
+        </fieldset>
+
+        <label for="range">How far (in miles) is your journey to work approximately?</label>
+        <input id="range" type="range" max="50" min="0" step="10">
+
+
+
+        <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
+          <div *ngIf="website.errors && (website.dirty || website.touched)">
+            <div [hidden]="!website.errors.required" role="alert">
+              <a (click)="getFocus('website')">The contact Web site address is required!</a>
+            </div>
+            <div [hidden]="!website.errors.pattern" role="alert">
+              <a (click)="getFocus('website')">The contact web site address is not a valid format!</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -57,5 +227,6 @@
 
   <div *ngIf="currentRecord">
     <p>the search term entered was:- {{ currentRecord }}</p>
+    <p>Sector {{ sector.value }}</p>
   </div>
 </div>

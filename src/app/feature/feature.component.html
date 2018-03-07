@@ -46,18 +46,47 @@
       <input type="radio" id="dickens" name="hamlet" value="e">
       <label for="dickens">Charles Dickens</label>
     </fieldset>
+
     <fieldset>
-      <legend>Title</legend>
-      <input type="radio" id="radio">
-      <label for="radio">Click me</label>
+      <legend>Please select every sport you play:</legend>
+      <input type="checkbox" id="cricket" name="sports" value="cricket">
+      <label for="cricket">Cricket</label>
+      <br />
+      <input type="checkbox" id="football" name="sports" value="football">
+      <label for="football">Football</label>
+      <br />
+      <input type="checkbox" id="baseball" name="sports" value="baseball">
+      <label for="baseball">Baseball</label>
+      <br />
+      <input type="checkbox" id="tennis" name="sports" checked="checked" value="tennis">
+      <label for="tennis">Tennis</label>
+      <br />
+      <input type="checkbox" id="basketball" name="sports" value="basketball">
+      <label for="basketball">Basketball</label>
     </fieldset>
+
+    <fieldset>
+      <legend>Please select a group option:</legend>
+      <label for="group-options">group option:</label>
+      <select id="group-options" aria-controls="group-options">
+        <optgroup label="Group 1">
+          <option>Option 1.1</option>
+        </optgroup>
+        <optgroup label="Group 2">
+          <option>Option 2.1</option>
+          <option>Option 2.2</option>
+        </optgroup>
+        <optgroup label="Group 3" disabled>
+          <option>Option 3.1</option>
+          <option>Option 3.2</option>
+          <option>Option 3.3</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
     <fieldset>
       <label for="range">Range</label>
       <input id="range" type="range" max="10" min="0" step="2">
-    </fieldset>
-    <fieldset>
-      <label for="checkBox">Checkbox</label>
-      <input id="checkBox" type="checkbox">
     </fieldset>
     <fieldset>
       <label for="colour">Colour</label>
@@ -131,23 +160,7 @@
   <h2>Meter</h2>
   <p>Heat the oven to
     <meter low="250" high="450" min="200" max="500" value="350">350 degrees</meter>.</p>
-  <h2>optGroup</h2>
-  <select>
-    <optgroup label="Group 1">
-      <option>Option 1.1</option>
-    </optgroup>
-    <optgroup label="Group 2">
-      <option>Option 2.1</option>
-      <option>Option 2.2</option>
-    </optgroup>
-    <optgroup label="Group 3" disabled>
-      <option>Option 3.1</option>
-      <option>Option 3.2</option>
-      <option>Option 3.3</option>
-    </optgroup>
-  </select>
   <h2>Progress</h2>
   <progress value="70" max="100">70 %</progress>
-  <h2>Range</h2>
 
 </div>
