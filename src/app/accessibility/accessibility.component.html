@@ -20,26 +20,31 @@
         <h1>Personal Detail</h1>
         <div class="card card-block">
           <fieldset class="form-group">
-            <label for="firstName">First Name</label>
+            <label for="firstName">First Name *</label>
             <input type="text" class="form-control" id="firstName" minlength="3" maxlength="30" placeholder="Please enter the contact first name"
+              role="text" aria-describedby="Please enter the contact first name" aria-valuemin="3" aria-valuemax="30"
               name="firstName" [(ngModel)]="record.firstName" #firstName="ngModel" required>
 
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Last Name *</label>
             <input type="text" class="form-control" id="lastName" minlength="3" maxlength="30" placeholder="Please enter the contact last name"
+              role="text" aria-describedby="Please enter the contact second name" aria-valuemin="3" aria-valuemax="30"
               name="lastName" [(ngModel)]="record.lastName" #lastName="ngModel" required>
 
-            <label for="emailAddress">Email Address</label>
+            <label for="emailAddress">Email Address *</label>
             <input type="email" class="form-control" id="emailAddress" placeholder="Please enter a contact email address" name="emailAddress"
+              role="text" aria-describedby="Please enter a contact email address (eg. contact@domain.com)"
               pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
 
-            <label for="landline">Landline Number</label>
+            <label for="landline">Landline Number *</label>
             <input type="tel" class="form-control" id="landline" placeholder="Please enter a contact UK landline telephone number" name="landline"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
+              role="tel" aria-describedby=" a contact UK landline telephone number (eg. xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx,"
               [(ngModel)]="record.landline" #landline="ngModel" required>
 
-            <label for="mobile">Mobile Number</label>
+            <label for="mobile">Mobile Number *</label>
             <input type="tel" class="form-control" id="mobile" placeholder="Please enter a contact mobile telephone number" name="mobile"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
+              role="tel" aria-describedby=" a contact mobile telephone number (eg. xxxx xxxxxx,"
               [(ngModel)]="record.mobile" #mobile="ngModel" required>
           </fieldset>
 
@@ -98,29 +103,35 @@
         <h1>Address Detail</h1>
         <div class="card card-block">
           <fieldset class="form-group">
-            <label for="addrLine1">Line 1</label>
+            <label for="addrLine1">Address Line 1 *</label>
             <input type="text" class="form-control" id="addrLine1" placeholder="Please enter the first line of the contact main address"
+              role="text" aria-describedby="Please enter the first line of the contact main address" 
               name="addrLine1" [(ngModel)]="address.addrLine1" #addrLine1="ngModel" required>
 
-            <label for="addrLine2">Line 2</label>
+            <label for="addrLine2">Address Line 2 *</label>
             <input type="text" class="form-control" id="addrLine2" placeholder="Please enter the second line of the contact main address"
-              name="addrLine2" [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
+            role="text" aria-describedby="Please enter the second line of the contact main address"
+            name="addrLine2" [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
 
-            <label for="addrLine3">Line 3</label>
+            <label for="addrLine3">Address Line 3</label>
             <input type="text" class="form-control" id="addrLine3" placeholder="Please enter the third line of the contact main address"
+              role="text" aria-describedby="Please enter the third line of the contact main address"
               name="addrLine3" [(ngModel)]="address.addrLine3" #addrLine3="ngModel">
 
-            <label for="city">Town / City</label>
+            <label for="city">Town / City *</label>
             <input type="text" class="form-control" id="city" placeholder="Please enter the town or city of the contact main address"
+              role="text" aria-describedby="Please enter the town or city of the contact main address"
               name="city" [(ngModel)]="address.city" #city="ngModel" required>
 
-            <label for="county">County</label>
+            <label for="county">County *</label>
             <input type="text" class="form-control" id="county" placeholder="Please enter the county of the contact main address" name="county"
+            role="text" aria-describedby="Please enter the county of the contact main address"
               [(ngModel)]="address.county" #county="ngModel" required>
 
-            <label for="postcode">Post Code</label>
-            <input type="text" class="form-control" id="postcode" placeholder="Please enter the postcode of the contact main address"
+            <label for="postcode">Post Code *</label>
+            <input type="text" class="form-control" id="postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
               pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
+              role="text" aria-describedby="Please enter the postcode of the contact main address (eg. xxx xxx, xxxx xxx)" aria-valuemax="30"
               name="postcode" [(ngModel)]="address.postcode" #postcode="ngModel" required>
           </fieldset>
 
@@ -161,34 +172,37 @@
       </div>
 
       <div id="personProfile" class="tab-pane fade" role="tabpanel">
-        <h1>Profile</h1>
+        <h1>Work Profile</h1>
         <div class="card card-block">
 
           <fieldset class="form-group">
 
             <legend>In which sector do you work?</legend>
-            <input type="radio" id="private" name="sector" (change)="onSelectionChange(entry)" value="private">
+            <input type="radio" id="private" name="sector" (change)="onSelectionChange(entry)" value="private"
+              role="radio" aria-describedby="The private sector">
             <label for="private">Private</label>
             <br />
-            <input type="radio" id="public" name="sector" (change)="onSelectionChange(entry)" value="public">
+            <input type="radio" id="public" name="sector" (change)="onSelectionChange(entry)" value="public"
+            role="radio" aria-describedby="The public sector">
             <label for="public">Public</label>
             <br />
-            <input type="radio" id="voluntary" name="sector" (change)="onSelectionChange(entry)" value="voluntary">
+            <input type="radio" id="voluntary" name="sector" (change)="onSelectionChange(entry)" value="voluntary"
+            role="radio" aria-describedby="The voluntary sector">
             <label for="voluntary">Voluntary</label>
           </fieldset>
 
           <fieldset class="form-group">
-
             <label for="date">When did you start at the company?</label>
-            <input id="date" type="date">
+            <input id="date" type="date" role="date" aria-describedby="Please select a date">
           </fieldset>
           <fieldset class="form-group">
             <label for="startTime">What time did you arrive at work this morning? </label>
-            <input type="time" id="startTime">
+            <input type="time" id="startTime" role="time" aria-describedby="Please select a time">
           </fieldset>
           <fieldset class="form-group">
             <label for="website">Company Web site</label>
-            <input type="url" class="form-control" id="website" placeholder="Please enter your favourite Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+            <input type="url" class="form-control" id="website" placeholder="Please enter the contact company Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+            role="url" aria-describedby="Please enter a contact email address (eg. http://www.domain.com)"
               [(ngModel)]="record.website" #website="ngModel" required>
           </fieldset>
 
