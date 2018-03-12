@@ -3,49 +3,60 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs nav-justified">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#personDetail" aria-controls="personDetail" role="tab">Personal Detail</a>
+      <a id="contactDetail" class="nav-link active" data-toggle="tab" href="#panel1" role="tab">Contact Detail</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#addressDetail" aria-controls="addressDetail" role="tab">Address Detail</a>
+      <a id="contactAddress" class="nav-link" data-toggle="tab" href="#panel2" role="tab">Contact Address</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#personProfile" aria-controls="personProfile" role="tab">Work Profile</a>
+      <a id="contactProfile" class="nav-link" data-toggle="tab" href="#panel3" role="tab">Contact Profile</a>
     </li>
+
   </ul>
 
-
   <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
+
+    <!-- Tab panels -->
     <div class="tab-content card">
-      <div id="personDetail" class="tab-pane fade in show active" role="tabpanel">
+      <!--Panel 1-->
+      <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
         <h1>Personal Detail</h1>
         <div class="card card-block">
           <fieldset class="form-group">
             <label for="firstName">First Name *</label>
-            <input type="text" class="form-control" id="firstName" minlength="3" maxlength="30" placeholder="Please enter the contact first name"
-              role="text" aria-describedby="Please enter the contact first name" aria-valuemin="3" aria-valuemax="30"
-              name="firstName" [(ngModel)]="record.firstName" #firstName="ngModel" required>
+            <input type="text" class="form-control" id="firstName" minlength="3" maxlength="30" placeholder="Please enter the first name"
+              role="text" aria-describedby="Please enter the contact first name" aria-valuemin="3" aria-valuemax="30" name="firstName"
+              [(ngModel)]="record.firstName" #firstName="ngModel" required>
+          </fieldset>
 
+          <fieldset class="form-group">
             <label for="lastName">Last Name *</label>
-            <input type="text" class="form-control" id="lastName" minlength="3" maxlength="30" placeholder="Please enter the contact last name"
-              role="text" aria-describedby="Please enter the contact second name" aria-valuemin="3" aria-valuemax="30"
-              name="lastName" [(ngModel)]="record.lastName" #lastName="ngModel" required>
+            <input type="text" class="form-control" id="lastName" minlength="3" maxlength="30" placeholder="Please enter the last name"
+              role="text" aria-describedby="Please enter the contact second name" aria-valuemin="3" aria-valuemax="30" name="lastName"
+              [(ngModel)]="record.lastName" #lastName="ngModel" required>
+          </fieldset>
 
+          <fieldset class="form-group">
             <label for="emailAddress">Email Address *</label>
-            <input type="email" class="form-control" id="emailAddress" placeholder="Please enter a contact email address" name="emailAddress"
-              role="text" aria-describedby="Please enter a contact email address (eg. contact@domain.com)"
-              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
+            <input type="text" class="form-control" id="emailAddress" placeholder="Please enter an email address" name="emailAddress"
+              role="text" aria-describedby="Please enter a contact email address (eg. contact@domain.com)" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
+          </fieldset>
 
+          <fieldset>
             <label for="landline">Landline Number *</label>
             <input type="tel" class="form-control" id="landline" placeholder="Please enter a contact UK landline telephone number" name="landline"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
               role="tel" aria-describedby=" a contact UK landline telephone number (eg. xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx,"
               [(ngModel)]="record.landline" #landline="ngModel" required>
+          </fieldset>
 
+          <fieldset>
             <label for="mobile">Mobile Number *</label>
             <input type="tel" class="form-control" id="mobile" placeholder="Please enter a contact mobile telephone number" name="mobile"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
-              role="tel" aria-describedby=" a contact mobile telephone number (eg. xxxx xxxxxx,"
-              [(ngModel)]="record.mobile" #mobile="ngModel" required>
+              role="tel" aria-describedby=" a contact mobile telephone number (eg. xxxx xxxxxx," [(ngModel)]="record.mobile"
+              #mobile="ngModel" required>
           </fieldset>
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
@@ -96,43 +107,57 @@
               </div>
             </div>
           </div>
+          <!--
+          <a id="linkContactAddress" class="nav-link" data-toggle="tab" href="#panel2" role="tab" (click)="onChangeTab('contactAddress')">Contact Address</a>
+          -->
         </div>
       </div>
-
-      <div id="addressDetail" class="tab-pane fade" role="tabpanel">
+      <!--/.Panel 1-->
+      <!--Panel 2-->
+      <div class="tab-pane fade" id="panel2" role="tabpanel">
         <h1>Address Detail</h1>
         <div class="card card-block">
           <fieldset class="form-group">
             <label for="addrLine1">Address Line 1 *</label>
             <input type="text" class="form-control" id="addrLine1" placeholder="Please enter the first line of the contact main address"
-              role="text" aria-describedby="Please enter the first line of the contact main address" 
-              name="addrLine1" [(ngModel)]="address.addrLine1" #addrLine1="ngModel" required>
+              role="text" aria-describedby="Please enter the first line of the contact main address" name="addrLine1" [(ngModel)]="address.addrLine1"
+              #addrLine1="ngModel" required>
+          </fieldset>
 
+          <fieldset class="form-group">
             <label for="addrLine2">Address Line 2 *</label>
             <input type="text" class="form-control" id="addrLine2" placeholder="Please enter the second line of the contact main address"
-            role="text" aria-describedby="Please enter the second line of the contact main address"
-            name="addrLine2" [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
+              role="text" aria-describedby="Please enter the second line of the contact main address" name="addrLine2" [(ngModel)]="address.addrLine2"
+              #addrLine2="ngModel" required>
+          </fieldset>
 
+          <fieldset>
             <label for="addrLine3">Address Line 3</label>
             <input type="text" class="form-control" id="addrLine3" placeholder="Please enter the third line of the contact main address"
-              role="text" aria-describedby="Please enter the third line of the contact main address"
-              name="addrLine3" [(ngModel)]="address.addrLine3" #addrLine3="ngModel">
+              role="text" aria-describedby="Please enter the third line of the contact main address" name="addrLine3" [(ngModel)]="address.addrLine3"
+              #addrLine3="ngModel">
+          </fieldset>
 
+          <fieldset>
             <label for="city">Town / City *</label>
             <input type="text" class="form-control" id="city" placeholder="Please enter the town or city of the contact main address"
-              role="text" aria-describedby="Please enter the town or city of the contact main address"
-              name="city" [(ngModel)]="address.city" #city="ngModel" required>
+              role="text" aria-describedby="Please enter the town or city of the contact main address" name="city" [(ngModel)]="address.city"
+              #city="ngModel" required>
+          </fieldset>
 
+          <fieldset>
             <label for="county">County *</label>
             <input type="text" class="form-control" id="county" placeholder="Please enter the county of the contact main address" name="county"
-            role="text" aria-describedby="Please enter the county of the contact main address"
-              [(ngModel)]="address.county" #county="ngModel" required>
+              role="text" aria-describedby="Please enter the county of the contact main address" [(ngModel)]="address.county"
+              #county="ngModel" required>
+          </fieldset>
 
+          <fieldset>
             <label for="postcode">Post Code *</label>
             <input type="text" class="form-control" id="postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
               pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
-              role="text" aria-describedby="Please enter the postcode of the contact main address (eg. xxx xxx, xxxx xxx)" aria-valuemax="30"
-              name="postcode" [(ngModel)]="address.postcode" #postcode="ngModel" required>
+              role="text" aria-describedby="Please enter the postcode of the contact main address (eg. xxx xxx, xxxx xxx)"
+              aria-valuemax="30" name="postcode" [(ngModel)]="address.postcode" #postcode="ngModel" required>
           </fieldset>
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
@@ -164,30 +189,27 @@
                 <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
               </div>
             </div>
-
           </div>
-
+          <!--
+          <a id="linkContactProfile" class="nav-link" data-toggle="tab" href="#panel3" role="tab" (click)="onChangeTab('contactProfile')">Contact Profile</a>
+          -->
         </div>
-
       </div>
-
-      <div id="personProfile" class="tab-pane fade" role="tabpanel">
-        <h1>Work Profile</h1>
+      <!--/.Panel 2-->
+      <!--Panel 3-->
+      <div class="tab-pane fade" id="panel3" role="tabpanel">
+        <h1>Contact Profile</h1>
         <div class="card card-block">
-
           <fieldset class="form-group">
 
             <legend>In which sector do you work?</legend>
-            <input type="radio" id="private" name="sector" (change)="onSelectionChange(entry)" value="private"
-              role="radio" aria-describedby="The private sector">
+            <input type="radio" id="private" name="sector" (change)="onSelectionChange(entry)" value="private" role="radio" aria-describedby="The private sector">
             <label for="private">Private</label>
             <br />
-            <input type="radio" id="public" name="sector" (change)="onSelectionChange(entry)" value="public"
-            role="radio" aria-describedby="The public sector">
+            <input type="radio" id="public" name="sector" (change)="onSelectionChange(entry)" value="public" role="radio" aria-describedby="The public sector">
             <label for="public">Public</label>
             <br />
-            <input type="radio" id="voluntary" name="sector" (change)="onSelectionChange(entry)" value="voluntary"
-            role="radio" aria-describedby="The voluntary sector">
+            <input type="radio" id="voluntary" name="sector" (change)="onSelectionChange(entry)" value="voluntary" role="radio" aria-describedby="The voluntary sector">
             <label for="voluntary">Voluntary</label>
           </fieldset>
 
@@ -201,13 +223,11 @@
           </fieldset>
           <fieldset class="form-group">
             <label for="website">Company Web site</label>
-            <input type="url" class="form-control" id="website" placeholder="Please enter the contact company Web site" name="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
-            role="url" aria-describedby="Please enter a contact email address (eg. http://www.domain.com)"
-              [(ngModel)]="record.website" #website="ngModel" required>
+            <input type="url" class="form-control" id="website" placeholder="Please enter the contact company Web site" name="website"
+              pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" role="url"
+              aria-describedby="Please enter a contact email address (eg. http://www.domain.com)" [(ngModel)]="record.website"
+              #website="ngModel" required>
           </fieldset>
-
-          <label for="range">How far (in miles) is your journey to work approximately?</label>
-          <input id="range" type="range" max="50" min="0" step="10">
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
             <div *ngIf="website.errors && (website.dirty || website.touched)">
@@ -219,20 +239,17 @@
               </div>
             </div>
           </div>
-
-          <button type="submit" class="btn btn-success" [disabled]="!newForm.form.valid">Submit</button>
-
         </div>
       </div>
-
-      <!--
-    <button type="button" class="_btn _btn-default" mat-raised-button color="primary" (click)="newForm.reset()">Clear</button>
-    -->
+      <!--/.Panel 3-->
     </div>
+
+    <button type="submit" class="_btn _btn-success" mat-raised-button color="accent" [disabled]="!newForm.form.valid">Submit</button>
+    <button type="button" class="_btn _btn-default" mat-raised-button color="primary" (click)="newForm.reset()">Clear</button>
+
   </form>
 
   <div *ngIf="currentRecord">
     <p>the search term entered was:- {{ currentRecord }}</p>
-    <p>Sector {{ sector.value }}</p>
   </div>
 </div>
