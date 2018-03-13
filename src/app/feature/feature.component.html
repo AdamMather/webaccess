@@ -1,6 +1,19 @@
 <div id="content">
   <h1>Feature</h1>
-  <p>content goes here.</p>
+  <p>This page is intended to serve as a demonstration of HTML elements that are compliant with WCAG 2.0 standards. and the
+    AT testing capability (JAWS, ZOOMText and Dragon NaturallySpeaking)</p>
+
+    <h2>Canvas</h2>
+    <canvas id="goodCanvas1" width="400" height="100" aria-label="Canvas image of three primary shapes" role="canvas">
+        <p>Presented to the screen is a lilac rectangle.
+           Above and to the left is a gold circle, which is partially behind the rectangle.
+           In the foregound from the centre of the circle forms an equilateral trangle with its apex towards the left of the canvas area. one half of the triangle overlays the rectangle.
+          All shapes have a black border.</p>
+    </canvas>
+    
+    <hr />   
+
+  <label for="bird-selector">Please choose aspecies of bird from the list:</label>
   <select size="1" id="bird-selector" aria-controls="bird-info">
     <option>Black Redstart</option>
     <option>Greenshank</option>
@@ -14,8 +27,8 @@
   <br />
   <h2>Datalist</h2>
   <br />
-  <label for="myBrowser">Choose a browser from this list:</label>
-  <input list="browsers" id="myBrowser" name="myBrowser" />
+  <label for="myBrowser">Please choose a browser from this list:</label>
+  <input list="browsers" id="myBrowser" name="myBrowser" role="list" aria-describedby="Select the name of your favourite web browser from the list" />
   <datalist id="browsers">
     <option value="Chrome">
       <option value="Firefox">
@@ -104,7 +117,7 @@
       <label for="email">Email</label>
       <input type="email" placeholder="email@domain.com" list="defaultEmails">
 
-      <datalist id="defaultEmails">
+      <datalist id="defaultEmails" aria-describedby="list of possible email addresses">
         <option value="jbond007@mi6.defence.gov.uk">
           <option value="jbourne@unknown.net">
             <option value="nfury@shield.org">
