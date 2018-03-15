@@ -1,5 +1,4 @@
-<div id="content">
-
+<nav role="navigation">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs nav-justified">
     <li class="nav-item">
@@ -13,7 +12,9 @@
     </li>
 
   </ul>
+</nav>
 
+<main>
   <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
 
     <!-- Tab panels -->
@@ -31,15 +32,15 @@
           <fieldset class="form-group">
             <label for="lastName">Last Name *</label>
             <input type="text" class="form-control" id="lastName" name="lastName" minlength="3" maxlength="30" placeholder="Please enter the last name"
-                [(ngModel)]="record.lastName" #lastName="ngModel" required>
+              [(ngModel)]="record.lastName" #lastName="ngModel" required>
           </fieldset>
 
           <fieldset class="form-group">
             <label for="emailAddress">Email Address *</label>
             <input type="email" class="form-control" id="emailAddress" placeholder="Please enter an email address" name="emailAddress"
-              role="email" aria-describedby="emailAddress_desc" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
-              [(ngModel)]="record.emailAddress" #emailAddress="ngModel" required>
-              <span id="emailAddress_desc" class="hidden">Please enter a contact email address (eg. contact@domain.com)</span>
+              role="email" aria-describedby="emailAddress_desc" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress"
+              #emailAddress="ngModel" required>
+            <span id="emailAddress_desc" class="hidden">Please enter a contact email address (eg. contact@domain.com)</span>
           </fieldset>
 
           <fieldset>
@@ -47,16 +48,15 @@
             <input type="tel" class="form-control" id="landline" placeholder="Please enter a contact UK landline telephone number" name="landline"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
               role="tel" aria-describedby="landline_desc" [(ngModel)]="record.landline" #landline="ngModel" required>
-              <span id="landline_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
+            <span id="landline_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
           </fieldset>
 
           <fieldset>
             <label for="mobile">Mobile Number *</label>
             <input type="tel" class="form-control" id="mobile" placeholder="Please enter a contact mobile telephone number" name="mobile"
               pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
-              role="tel" aria-describedby="mobile_desc" [(ngModel)]="record.mobile"
-              #mobile="ngModel" required>
-              <span id="mobile_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
+              role="tel" aria-describedby="mobile_desc" [(ngModel)]="record.mobile" #mobile="ngModel" required>
+            <span id="mobile_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
           </fieldset>
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
@@ -142,8 +142,7 @@
           <fieldset>
             <label for="county">County *</label>
             <input type="text" class="form-control" id="county" placeholder="Please enter the county of the contact main address" name="county"
-              [(ngModel)]="address.county"
-              #county="ngModel" required>
+              [(ngModel)]="address.county" #county="ngModel" required>
           </fieldset>
 
           <fieldset>
@@ -151,7 +150,7 @@
             <input type="text" class="form-control" id="postcode" name="postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
               pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
               aria-describedby="postcode_desc" [(ngModel)]="address.postcode" #postcode="ngModel" required>
-              <span id="postcode_desc" class="hidden">example format required: xxx xxx, xxxx xxx</span>
+            <span id="postcode_desc" class="hidden">example format required: xxx xxx, xxxx xxx</span>
           </fieldset>
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
@@ -217,9 +216,8 @@
             <label for="website">Company Web site</label>
             <input type="url" class="form-control" id="website" placeholder="Please enter the contact company Web site" name="website"
               pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" role="url"
-              aria-describedby="url_desc" [(ngModel)]="record.website"
-              #website="ngModel" required>
-              <span id="url_desc" class="hidden">example format required: http://www.domain.com</span>
+              aria-describedby="url_desc" [(ngModel)]="record.website" #website="ngModel" required>
+            <span id="url_desc" class="hidden">example format required: http://www.domain.com</span>
           </fieldset>
 
           <div *ngIf="!newForm.form.pristine && !newForm.form.valid" class="alert alert-danger">
@@ -241,6 +239,6 @@
   </form>
 
   <div *ngIf="currentRecord">
-    
+
   </div>
-</div>
+</main>
