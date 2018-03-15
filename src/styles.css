@@ -2,3 +2,7 @@
 .hidden {
     display: none;
 }
+
+a:focus {
+    font-size: larger;
+}
