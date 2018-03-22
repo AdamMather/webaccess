@@ -16,6 +16,7 @@
   </nav>
 
   <main>
+
     <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
 
       <!-- Tab panels -->
@@ -62,48 +63,48 @@
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
               <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-                <div [hidden]="!firstName.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_fnReq" [hidden]="!firstName.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('firstName')">The contact first name is required!</a>
                 </div>
-                <div [hidden]="!firstName.errors.minlength" role="alert" class="alert alert-danger">
+                <div id="errMsg_fnMinLgt" [hidden]="!firstName.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('firstName')">The contact first name must be at least 3 characters long.</a>
                 </div>
-                <div [hidden]="!firstName.errors.maxlength" role="alert" class="alert alert-danger">
+                <div id="errMsg_fnMaxLgt" [hidden]="!firstName.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('firstName')">The contact first name cannot be more than 30 characters long.</a>
                 </div>
               </div>
               <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-                <div [hidden]="!lastName.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_lnReq" [hidden]="!lastName.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('lastName')">The contact last name is required!</a>
                 </div>
-                <div [hidden]="!lastName.errors.minlength" role="alert" class="alert alert-danger">
+                <div id="errMsg_lnMinLgt" [hidden]="!lastName.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('lastName')">The contact last name must be at least 3 characters long.</a>
                 </div>
-                <div [hidden]="!lastName.errors.maxlength" role="alert" class="alert alert-danger">
+                <div id="errMsg_lnMinLgt" [hidden]="!lastName.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('lastName')">The contact last name cannot be more than 30 characters long.</a>
                 </div>
               </div>
               <div *ngIf="emailAddress.errors && (emailAddress.dirty || emailAddress.touched)">
-                <div [hidden]="!emailAddress.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_emReq" [hidden]="!emailAddress.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('emailAddress')">The contact email address is required!</a>
                 </div>
-                <div [hidden]="!emailAddress.errors.pattern" role="alert" class="alert alert-danger">
+                <div id="errMsg_emInv" [hidden]="!emailAddress.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('emailAddress')">The contact email address is invalid!</a>
                 </div>
               </div>
               <div *ngIf="landline.errors && (landline.dirty || landline.touched)">
-                <div [hidden]="!landline.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_tlReq" [hidden]="!landline.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('landline')">The contact UK landline telephone number is required!</a>
                 </div>
-                <div [hidden]="!landline.errors.pattern" role="alert" class="alert alert-danger">
+                <div id="errMsg_tlInv" [hidden]="!landline.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('landline')">The contact landline telephone number is invalid!</a>
                 </div>
               </div>
               <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)">
-                <div [hidden]="!mobile.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_mbReq" [hidden]="!mobile.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('mobile')">The contact mobile telephone number is required!</a>
                 </div>
-                <div [hidden]="!mobile.errors.pattern" role="alert" class="alert alert-danger">
+                <div id="errMsg_mbInv" [hidden]="!mobile.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('mobile')">The contact mobile telephone number is invalid!</a>
                 </div>
               </div>
@@ -156,30 +157,30 @@
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
               <div *ngIf="addrLine1.errors && (addrLine1.dirty || addrLine1.touched)">
-                <div [hidden]="!addrLine1.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_a1Req" [hidden]="!addrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('addrLine1')">The first line of the contact main address is required!</a>
                 </div>
               </div>
               <div *ngIf="addrLine2.errors && (addrLine2.dirty || addrLine2.touched)">
-                <div [hidden]="!addrLine2.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_a2Req" [hidden]="!addrLine2.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('addrLine2')">The second line of the contact main address is required!</a>
                 </div>
               </div>
               <div *ngIf="city.errors && (city.dirty || city.touched)">
-                <div [hidden]="!city.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_ctReq" [hidden]="!city.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('city')">The town or city of the contact main address is required!</a>
                 </div>
               </div>
               <div *ngIf="county.errors && (county.dirty || county.touched)">
-                <div [hidden]="!county.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_cyReq" [hidden]="!county.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('county')">The county of the contact main address is required!</a>
                 </div>
               </div>
               <div *ngIf="postcode.errors && (postcode.dirty || postcode.touched)">
-                <div [hidden]="!postcode.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_pcReq" [hidden]="!postcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('postcode')">The postcode of the contact main address is required!</a>
                 </div>
-                <div [hidden]="!postcode.errors.pattern" role="alert" class="alert alert-danger">
+                <div id="errMsg_pcInv" [hidden]="!postcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
                 </div>
               </div>
@@ -223,10 +224,10 @@
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
               <div *ngIf="website.errors && (website.dirty || website.touched)">
-                <div [hidden]="!website.errors.required" role="alert" class="alert alert-danger">
+                <div id="errMsg_wsReq" [hidden]="!website.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('website')">The contact Web site address is required!</a>
                 </div>
-                <div [hidden]="!website.errors.pattern" role="alert" class="alert alert-danger">
+                <div id="errMsg_wsInv" [hidden]="!website.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                   <a (click)="getFocus('website')">The contact web site address is not a valid format!</a>
                 </div>
               </div>
