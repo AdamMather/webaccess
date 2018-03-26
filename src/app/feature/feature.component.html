@@ -3,15 +3,51 @@
   <p>This page is intended to serve as a demonstration of HTML elements that are compliant with WCAG 2.0 standards. and the
     AT testing capability (JAWS, ZOOMText and Dragon NaturallySpeaking)</p>
 
-    <h2>Canvas</h2>
-    <canvas id="goodCanvas1" width="400" height="100" aria-label="Canvas image of three primary shapes" role="canvas">
-        <p>Presented to the screen is a lilac rectangle.
-           Above and to the left is a gold circle, which is partially behind the rectangle.
-           In the foregound from the centre of the circle forms an equilateral trangle with its apex towards the left of the canvas area. one half of the triangle overlays the rectangle.
-          All shapes have a black border.</p>
-    </canvas>
-    
-    <hr />   
+  <h2>Navigation bar with working dropdowns accessible with a keyboard</h2>
+
+  <ul role="menubar" aria-label="functions" id="appmenu">
+    <li id="menu1" role="menuitem" aria-haspopup="true" data-toggle="collapse" data-target="#collapseMenu1" aria-expanded="false"
+      aria-controls="collapseMenu1" aria-label="Toggle menu 1">
+      <button class="dropdown-toggle dropdown-border">Menu 1</button>
+      <ul role="menu" class="collapse" id="collapseMenu1">
+        <li role="menuitem">Link 1</li>
+        <li role="menuitem">Link 2</li>
+        <li role="menuitem">Link...</li>
+      </ul>
+    </li>
+    <li id="menu2" role="menuitem" aria-haspopup="true" data-toggle="collapse" data-target="#collapseMenu2" aria-expanded="false"
+      aria-controls="collapseMenu2">
+      <button class="dropdown-toggle">Menu 2</button>
+      <ul role="menu" class="collapse" id="collapseMenu2">
+        <li role="menuitem">Link 1</li>
+        <li role="menuitem">Link 2</li>
+        <li role="menuitem">Link...</li>
+      </ul>
+      <li role="menuitem">Help</li>
+  </ul>
+
+  <h2>Form where by all elements can be checked and unchecked</h2>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="all" (change)="checkAll()" /> Select All
+    </label>
+  </div>
+
+  <div class="checkbox" *ngFor="let vehicle of vehicles; let i = index">
+    <label>
+      <input type="checkbox" name="vehicles[]" value="{{vehicle.id}}" [checked]="isSelected"> {{ vehicle.make }}
+    </label>
+  </div>
+
+  <h2>Canvas</h2>
+  <canvas id="goodCanvas1" width="400" height="100" aria-label="Canvas image of three primary shapes" role="canvas">
+    <p>Presented to the screen is a lilac rectangle. Above and to the left is a gold circle, which is partially behind the rectangle.
+      In the foregound from the centre of the circle forms an equilateral trangle with its apex towards the left of the canvas
+      area. one half of the triangle overlays the rectangle. All shapes have a black border.</p>
+  </canvas>
+
+  <hr />
 
   <label for="bird-selector">Please choose aspecies of bird from the list:</label>
   <select size="1" id="bird-selector" aria-controls="bird-info">
@@ -28,7 +64,8 @@
   <h2>Datalist</h2>
   <br />
   <label for="myBrowser">Please choose a browser from this list:</label>
-  <input list="browsers" id="myBrowser" name="myBrowser" role="list" aria-describedby="Select the name of your favourite web browser from the list" />
+  <input list="browsers" id="myBrowser" name="myBrowser" role="list" aria-describedby="Select the name of your favourite web browser from the list"
+  />
   <datalist id="browsers">
     <option value="Chrome">
       <option value="Firefox">
@@ -176,4 +213,4 @@
   <h2>Progress</h2>
   <progress value="70" max="100">70 %</progress>
 
-  </main>
+</main>
