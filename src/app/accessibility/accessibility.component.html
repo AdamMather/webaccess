@@ -28,37 +28,37 @@
             <fieldset class="form-group">
               <label for="firstName">First Name *</label>
               <input type="text" class="form-control" id="firstName" name="firstName" minlength="3" maxlength="30" placeholder="Please enter the first name"
-                [(ngModel)]="record.firstName" #firstName="ngModel" required>
+                     aria-required="true" [(ngModel)]="record.firstName" #firstName="ngModel" required>
             </fieldset>
 
             <fieldset class="form-group">
               <label for="lastName">Last Name *</label>
               <input type="text" class="form-control" id="lastName" name="lastName" minlength="3" maxlength="30" placeholder="Please enter the last name"
-                [(ngModel)]="record.lastName" #lastName="ngModel" required>
+                     aria-required="true" [(ngModel)]="record.lastName" #lastName="ngModel" required>
             </fieldset>
 
             <fieldset class="form-group">
               <label for="emailAddress">Email Address *</label>
               <input type="email" class="form-control" id="emailAddress" placeholder="Please enter an email address" name="emailAddress"
-                role="email" aria-describedby="emailAddress_desc" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress"
+                     role="email" aria-describedby="emailAddress_desc" aria-required="true" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [(ngModel)]="record.emailAddress"
                 #emailAddress="ngModel" required>
-              <span id="emailAddress_desc" class="hidden">Please enter a contact email address (eg. contact@domain.com)</span>
+              <span id="emailAddress_desc" class="hidden" aria-live="assertive">Please enter a contact email address (eg. contact@domain.com)</span>
             </fieldset>
 
             <fieldset>
               <label for="landline">Landline Number *</label>
               <input type="tel" class="form-control" id="landline" placeholder="Please enter a contact UK landline telephone number" name="landline"
                 pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
-                role="tel" aria-describedby="landline_desc" [(ngModel)]="record.landline" #landline="ngModel" required>
-              <span id="landline_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
+                role="tel" aria-describedby="landline_desc" aria-required="true" [(ngModel)]="record.landline" #landline="ngModel" required>
+              <span id="landline_desc" class="hidden" aria-live="assertive">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
             </fieldset>
 
             <fieldset>
               <label for="mobile">Mobile Number *</label>
               <input type="tel" class="form-control" id="mobile" placeholder="Please enter a contact mobile telephone number" name="mobile"
                 pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
-                role="tel" aria-describedby="mobile_desc" [(ngModel)]="record.mobile" #mobile="ngModel" required>
-              <span id="mobile_desc" class="hidden">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
+                role="tel" aria-describedby="mobile_desc" aria-required="true" [(ngModel)]="record.mobile" #mobile="ngModel" required>
+              <span id="mobile_desc" class="hidden" aria-live="assertive">example format required: xxx xxxx xxxx, xxxx xxx xxxx, xxxxx xxxxxx</span>
             </fieldset>
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
@@ -120,13 +120,13 @@
             <fieldset class="form-group">
               <label for="addrLine1">Address Line 1 *</label>
               <input type="text" class="form-control" id="addrLine1" name="addrLine1" placeholder="Please enter the first line of the contact main address"
-                [(ngModel)]="address.addrLine1" #addrLine1="ngModel" required>
+                     aria-required="true" [(ngModel)]="address.addrLine1" #addrLine1="ngModel" required>
             </fieldset>
 
             <fieldset class="form-group">
               <label for="addrLine2">Address Line 2 *</label>
               <input type="text" class="form-control" id="addrLine2" name="addrLine2" placeholder="Please enter the second line of the contact main address"
-                [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
+                     aria-required="true" [(ngModel)]="address.addrLine2" #addrLine2="ngModel" required>
             </fieldset>
 
             <fieldset>
@@ -138,21 +138,21 @@
             <fieldset>
               <label for="city">Town / City *</label>
               <input type="text" class="form-control" id="city" name="city" placeholder="Please enter the town or city of the contact main address"
-                [(ngModel)]="address.city" #city="ngModel" required>
+                     aria-required="true" [(ngModel)]="address.city" #city="ngModel" required>
             </fieldset>
 
             <fieldset>
               <label for="county">County *</label>
               <input type="text" class="form-control" id="county" placeholder="Please enter the county of the contact main address" name="county"
-                [(ngModel)]="address.county" #county="ngModel" required>
+                     aria-required="true" [(ngModel)]="address.county" #county="ngModel" required>
             </fieldset>
 
             <fieldset>
               <label for="postcode">Post Code *</label>
               <input type="text" class="form-control" id="postcode" name="postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
                 pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
-                aria-describedby="postcode_desc" [(ngModel)]="address.postcode" #postcode="ngModel" required>
-              <span id="postcode_desc" class="hidden">example format required: xxx xxx, xxxx xxx</span>
+                aria-describedby="postcode_desc" aria-required="true" [(ngModel)]="address.postcode" #postcode="ngModel" required>
+              <span id="postcode_desc" class="hidden" aria-live="assertive">example format required: xxx xxx, xxxx xxx</span>
             </fieldset>
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
@@ -218,8 +218,8 @@
               <label for="website">Company Web site</label>
               <input type="url" class="form-control" id="website" placeholder="Please enter the contact company Web site" name="website"
                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" role="url"
-                aria-describedby="url_desc" [(ngModel)]="record.website" #website="ngModel" required>
-              <span id="url_desc" class="hidden">example format required: http://www.domain.com</span>
+                aria-describedby="url_desc" aria-required="true" [(ngModel)]="record.website" #website="ngModel" required>
+              <span id="url_desc" class="hidden" aria-live="assertive">example format required: http://www.domain.com</span>
             </fieldset>
 
             <div *ngIf="!newForm.form.pristine && !newForm.form.valid">
@@ -233,7 +233,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-success" [disabled]="!newForm.form.valid">Submit</button>
+            <button type="submit" class="btn btn-success" aria-disabled="!newForm.form.valid" [disabled]="!newForm.form.valid">Submit</button>
 
           </div>
         </div>
