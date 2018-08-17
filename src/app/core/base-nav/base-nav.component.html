@@ -1,6 +1,7 @@
-<a href="{{global.path}}#content" class="sr-only sr-only-focusable">Skip to content</a>
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
 <div *ngIf="search.term"><p>the search term entered was:- {{ search.term }}</p></div>
 
+<!--
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +30,11 @@
         </form>
     </div>
 </nav>
-
+-->
+<!--
 <div id="wrapper">
+    -->
+    <!--
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
@@ -45,5 +49,6 @@
             </li>
         </ul>
     </nav>
+    -->
     <router-outlet></router-outlet>
-</div>
+<!-- </div> -->
